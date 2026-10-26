@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Sessiyalar — AuthLab{% endblock %}
+
+{% block content %}
+<div class="app">
+    <header class="nav"><a class="brand" href="{% url 'dashboard' %}"><span class="mark">A</span>AuthLab</a><a href="{% url 'profile' %}">← Profil</a></header>
+    <main class="container"><div class="section-title"><div><h1>Faol sessiyalar</h1><p class="muted">Hisobingiz ochiq turgan qurilmalarni nazorat qiling.</p></div><button class="danger-link" data-remove-other-sessions>Boshqa barcha sessiyalardan chiqish</button></div><div class="table" data-session-list><div class="row" data-current-session><div><strong>Chrome · Ubuntu</strong><div class="muted">Toshkent, O‘zbekiston</div></div><div>127.0.0.1</div><span class="status">Joriy sessiya</span><span></span></div><div class="row" data-other-session><div><strong>Safari · iPhone</strong><div class="muted">Toshkent, O‘zbekiston</div></div><div>192.168.1.24</div><span class="muted">2 soat oldin</span><button class="danger-link" data-revoke>Tugatish</button></div><div class="row" data-other-session><div><strong>Chrome · Windows</strong><div class="muted">Samarqand, O‘zbekiston</div></div><div>192.168.1.31</div><span class="muted">3 kun oldin</span><button class="danger-link" data-revoke>Tugatish</button></div></div></main>
+</div>
+{% endblock %}

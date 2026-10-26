@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="uz">
+<body style="margin:0;padding:0;background:#f4f5fb;font-family:Arial,sans-serif;color:#172033;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="padding:36px 16px;background:#f4f5fb;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 12px 38px rgba(28,39,79,.10);">
+          <tr>
+            <td style="padding:26px 36px;background:linear-gradient(135deg,#312e81,#7c3aed);color:#ffffff;font-size:22px;font-weight:700;">
+              <span style="display:inline-block;width:34px;height:34px;line-height:34px;text-align:center;margin-right:10px;border-radius:10px;background:#ffffff;color:#312e81;">A</span>AuthLab
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:42px 36px 36px;">
+              <p style="margin:0 0 14px;color:#5b5bd6;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Email tasdiqlash</p>
+              <h1 style="margin:0 0 16px;font-size:29px;line-height:1.2;color:#172033;">Salom, {{ user.first_name }}!</h1>
+              <p style="margin:0 0 26px;font-size:16px;line-height:1.65;color:#667085;">AuthLab hisobingizni faollashtirish uchun email manzilingizni tasdiqlang. Quyidagi tugma xavfsiz, bir martalik tasdiqlash havolasini ochadi.</p>
+              <table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 28px;">
+                <tr>
+                  <td style="border-radius:12px;background:#5b5bd6;">
+                    <a href="{{ verification_url }}" style="display:inline-block;padding:15px 25px;border-radius:12px;color:#ffffff;font-size:16px;font-weight:700;text-decoration:none;">Verify Email</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0 0 10px;font-size:14px;line-height:1.6;color:#667085;">Bu havola {{ verification_timeout_hours }} soat davomida amal qiladi va email tasdiqlangach qayta ishlamaydi.</p>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:#667085;">Agar hisobni siz yaratmagan bo‘lsangiz, hech qanday amal bajarmang.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:22px 36px;border-top:1px solid #e4e7ec;color:#98a2b3;font-size:12px;line-height:1.5;">© AuthLab · Xavfsiz hisob boshqaruvi</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

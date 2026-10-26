@@ -1,0 +1,15 @@
+{% load static %}
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}AuthLab{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'apps/css/auth.css' %}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+{% block content %}{% endblock %}
+<script src="{% static 'apps/js/auth.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

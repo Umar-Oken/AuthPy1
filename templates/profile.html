@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Profil — AuthLab{% endblock %}
+
+{% block content %}
+<div class="app">
+    <header class="nav"><a class="brand" href="{% url 'dashboard' %}"><span class="mark">A</span>AuthLab</a><div class="nav-actions"><button class="theme" data-theme type="button">◐ Tema</button><div class="avatar">{{ user.first_name|default:user.email|first|upper }}</div></div></header>
+    <main class="container"><div class="profile-grid">
+        <aside class="card profile-menu"><h3>Hisob sozlamalari</h3><a class="active" href="{% url 'profile' %}">Shaxsiy ma’lumotlar</a><a href="{% url 'sessions' %}">Faol sessiyalar</a><a href="#password">Parol va xavfsizlik</a><a href="{% url 'dashboard' %}">← Dashboard</a></aside>
+        <div class="stack">
+            <section class="card"><h2>Shaxsiy ma’lumotlar</h2><p class="muted">Static formani sinab ko‘ring.</p><div class="messages" data-message-area hidden></div><form data-message-form="Profil ma’lumotlari saqlandi (demo)."><div class="two"><div class="field"><label for="first_name">Ism</label><div class="control"><input id="first_name" name="first_name" value="{{ user.first_name }}"></div></div><div class="field"><label for="last_name">Familiya</label><div class="control"><input id="last_name" name="last_name" value="{{ user.last_name }}"></div></div></div><div class="field"><label for="email">Email</label><div class="control"><input id="email" name="email" type="email" value="{{ user.email }}"></div><p class="hint">Backend ulanganda email o‘zgarsa, qayta tasdiqlash talab qilinishi mumkin.</p></div><button class="btn btn-primary compact-btn">Saqlash</button></form></section>
+            <section class="card" id="password"><h2>Parolni almashtirish</h2><form data-message-form="Parol yangilandi (demo)."><div class="field"><label for="old_password">Joriy parol</label><div class="control"><input id="old_password" type="password" required></div></div><div class="two"><div class="field"><label for="new_password1">Yangi parol</label><div class="control"><input id="new_password1" type="password" required></div></div><div class="field"><label for="new_password2">Tasdiqlash</label><div class="control"><input id="new_password2" type="password" required></div></div></div><button class="btn btn-primary compact-btn">Parolni yangilash</button></form></section>
+        </div>
+    </div></main>
+</div>
+{% endblock %}

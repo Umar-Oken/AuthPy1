@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Kirish — AuthLab{% endblock %}
+
+{% block content %}
+<main class="shell">
+    <section class="visual">
+        <a class="brand" href="{% url 'login' %}"><span class="mark">A</span>AuthLab</a>
+        <div class="visual-copy"><span class="eyebrow">● Authentication amaliyoti</span><h1>Xavfsiz kirish shu yerdan boshlanadi.</h1><p>Login, sessiya, redirect va xabarlar tizimini real interfeys orqali o‘rganing.</p><div class="lesson-list"><span>Foydalanuvchi</span><span>Login</span><span>Sessiya</span><span>Redirect</span></div></div>
+        <small>Static frontend o‘quv shabloni</small>
+    </section>
+    <section class="auth-side">
+        <div class="auth-wrap">
+            <a class="brand mobile-brand" href="{% url 'login' %}"><span class="mark">A</span>AuthLab</a>
+            <div class="topline">Hisobingiz yo‘qmi?&nbsp;<a href="{% url 'register' %}">Ro‘yxatdan o‘ting</a></div>
+            <h2>Xush kelibsiz 👋</h2><p class="lead">Davom etish uchun emailingiz va parolingizni kiriting.</p>
+            {% if messages %}<div class="messages">{% for message in messages %}<div class="alert alert-{{ message.tags|default:'success' }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+            <div class="messages" data-message-area hidden></div>
+            {% if form.non_field_errors %}<div class="messages">{% for error in form.non_field_errors %}<div class="alert alert-error">{{ error }}</div>{% endfor %}</div>{% endif %}
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                <div class="field"><label for="email">Email manzil</label><div class="control"><input id="email" name="email" type="email" autocomplete="email" value="{{ form.email.value|default_if_none:'' }}" placeholder="student@example.com" required></div>{% for error in form.email.errors %}<p class="error">{{ error }}</p>{% endfor %}</div>
+                <div class="field"><div class="label-row"><label for="password">Parol</label><a href="{% url 'password_reset' %}">Parolni unutdingizmi?</a></div><div class="control"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required><button class="toggle-pass" type="button" data-toggle-password="password">Ko‘rish</button></div></div>
+                <label class="check"><input name="remember_me" type="checkbox"{% if form.remember_me.value %} checked{% endif %}> Ushbu qurilmada meni eslab qol</label>
+                <button class="btn btn-primary" type="submit">Tizimga kirish →</button>
+            </form>
+            <div class="divider">yoki</div>
+            <button class="btn btn-ghost" type="button" data-demo-message="Google orqali kirish faqat UI namunasidir.">G Google bilan davom etish (UI)</button>
+        </div>
+    </section>
+</main>
+{% endblock %}

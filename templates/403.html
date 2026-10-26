@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Ruxsat yo‘q — AuthLab{% endblock %}
+
+{% block content %}
+<main class="auth-side" style="min-height: 100vh">
+    <section class="auth-wrap forbidden-page">
+        <div class="icon">🔒</div>
+        <p class="eyebrow">403 · Forbidden</p>
+        <h2>Bu sahifa uchun ruxsatingiz yetarli emas</h2>
+        <p class="lead">Bu sahifaga kirish uchun kerakli ruxsatga ega emassiz.</p>
+        <a class="btn btn-primary" href="{% url 'dashboard' %}">Dashboardga qaytish</a>
+        <a class="text-link" href="{% url 'login' %}">Boshqa hisob bilan kirish</a>
+    </section>
+</main>
+{% endblock %}

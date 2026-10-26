@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — AuthLab{% endblock %}
+
+{% block content %}
+<div class="app">
+    <header class="nav">
+        <a class="brand" href="{% url 'dashboard' %}"><span class="mark">A</span>AuthLab</a>
+        <div class="nav-actions">
+            <button class="theme" data-theme type="button">◐ Tema</button>
+            <div class="avatar">{{ user.first_name|default:user.email|first|upper }}</div>
+            <span class="user-name">{{ user.get_full_name|default:user.email }}</span>
+            <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="danger-link" type="submit">Chiqish</button></form>
+        </div>
+    </header>
+    <main class="container">
+        <section class="welcome">
+            <div><h1>Salom, {{ user.first_name|default:user.email }}!</h1><p>AuthLab interfeysiga xush kelibsiz.</p></div>
+            <span class="badge">● Tizimga kirilgan</span>
+        </section>
+        <div class="grid">
+            <article class="card"><div class="icon">♙</div><h3>Authentication</h3><p>Foydalanuvchining tizimga kirgani backend ulanganda tekshiriladi.</p></article>
+            <article class="card"><div class="icon">⌁</div><h3>Session</h3><p>Session foydalanuvchini keyingi so‘rovlarda tanib turadi.</p></article>
+            <article class="card"><div class="icon">✓</div><h3>Authorization</h3><p>Login kimligini, permission esa nima qila olishini aniqlaydi.</p></article>
+        </div>
+        <div class="section-title"><h2>Hisob boshqaruvi</h2><span class="muted">Frontend namunalari</span></div>
+        <div class="grid">
+            <article class="card"><h3>Foydalanuvchi profili</h3><p>Shaxsiy ma’lumotlar va parol sozlamalarini ko‘ring.</p><a href="{% url 'profile' %}">Profilni ko‘rish →</a></article>
+            <article class="card"><h3>Faol sessiyalar</h3><p>Hisob ochiq turgan qurilmalarni boshqaring.</p><a href="{% url 'sessions' %}">Sessiyalar →</a></article>
+            <article class="card"><h3>Ruxsat yo‘q</h3><p>403 sahifasining umumiy interfeysdagi ko‘rinishi.</p><a href="{% url 'forbidden' %}">403 sahifa →</a></article>
+        </div>
+    </main>
+</div>
+{% endblock %}

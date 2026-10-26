@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Ro‘yxatdan o‘tish — AuthLab{% endblock %}
+
+{% block content %}
+<main class="shell">
+    <section class="visual"><a class="brand" href="{% url 'login' %}"><span class="mark">A</span>AuthLab</a><div class="visual-copy"><span class="eyebrow">Yangi hisob</span><h1>Bir formadan to‘liq auth oqimigacha.</h1><p>Validatsiya, unique email, kuchli parol va email tasdiqlash bosqichlarini ketma-ket o‘rganing.</p><div class="lesson-list"><span>User creation</span><span>Validation</span><span>Hashing</span><span>Email verification</span></div></div><small>Parol hech qachon ochiq saqlanmaydi</small></section>
+    <section class="auth-side"><div class="auth-wrap"><a class="brand mobile-brand" href="{% url 'login' %}"><span class="mark">A</span>AuthLab</a><div class="topline">Hisobingiz bormi?&nbsp;<a href="{% url 'login' %}">Kirish</a></div><h2>Hisob yarating</h2><p class="lead">Ma’lumotlarni kiriting. Barcha maydonlar majburiy.</p>
+        {% if form.non_field_errors %}<div class="messages">{% for error in form.non_field_errors %}<div class="alert alert-error">{{ error }}</div>{% endfor %}</div>{% endif %}
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div class="two"><div class="field"><label for="first_name">Ism</label><div class="control"><input id="first_name" name="first_name" autocomplete="given-name" value="{{ form.first_name.value|default_if_none:'' }}" required></div>{% for error in form.first_name.errors %}<p class="error">{{ error }}</p>{% endfor %}</div><div class="field"><label for="last_name">Familiya</label><div class="control"><input id="last_name" name="last_name" autocomplete="family-name" value="{{ form.last_name.value|default_if_none:'' }}" required></div>{% for error in form.last_name.errors %}<p class="error">{{ error }}</p>{% endfor %}</div></div>
+            <div class="field"><label for="email">Email</label><div class="control"><input id="email" name="email" type="email" autocomplete="email" value="{{ form.email.value|default_if_none:'' }}" placeholder="student@example.com" required></div>{% for error in form.email.errors %}<p class="error">{{ error }}</p>{% endfor %}</div>
+            <div class="field"><label for="password1">Parol</label><div class="control"><input id="password1" name="password1" type="password" autocomplete="new-password" data-password required><button class="toggle-pass" type="button" data-toggle-password="password1">Ko‘rish</button></div><div class="strength"><span></span></div>{% for error in form.password1.errors %}<p class="error">{{ error }}</p>{% endfor %}</div>
+            <div class="requirements"><span data-rule="length" data-label="Kamida 8 belgi">○ Kamida 8 belgi</span><span data-rule="upper" data-label="Katta harf">○ Katta harf</span><span data-rule="number" data-label="Raqam">○ Raqam</span><span data-rule="symbol" data-label="Maxsus belgi">○ Maxsus belgi</span></div>
+            <div class="field"><label for="password2">Parolni tasdiqlang</label><div class="control"><input id="password2" name="password2" type="password" autocomplete="new-password" required><button class="toggle-pass" type="button" data-toggle-password="password2">Ko‘rish</button></div>{% for error in form.password2.errors %}<p class="error">{{ error }}</p>{% endfor %}</div>
+            <label class="check"><input name="terms" type="checkbox" required> Foydalanish shartlari va maxfiylik siyosatiga roziman</label>
+            <button class="btn btn-primary" type="submit">Hisob yaratish →</button>
+        </form>
+    </div></section>
+</main>
+{% endblock %}

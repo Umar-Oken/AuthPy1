@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Email tasdiqlash — AuthLab{% endblock %}
+
+{% block content %}
+<main class="shell">
+    <section class="visual"><a class="brand" href="{% url 'login' %}"><span class="mark">A</span>AuthLab</a><div class="visual-copy"><span class="eyebrow">Email verification</span><h1>Bir qadam qoldi.</h1><p>Tasdiqlangan email soxta hisoblarni kamaytiradi va xavfsiz password reset uchun asos bo‘ladi.</p></div></section>
+    <section class="auth-side"><div class="auth-wrap"><a class="brand mobile-brand" href="{% url 'login' %}"><span class="mark">A</span>AuthLab</a><div class="icon">✉</div><br><h2>Emailingizni tekshiring</h2><p class="lead"><strong>{{ email|default:"Emailingiz" }}</strong> manziliga tasdiqlash havolasi yuborildi. Havola 24 soat amal qiladi.</p><p class="hint">Tasdiqlashdan so‘ng tizim sizni kirish sahifasiga yo‘naltiradi.</p><div class="divider">hisobingiz bormi?</div><a class="btn btn-ghost" href="{% url 'login' %}">← Kirish sahifasiga qaytish</a></div></section>
+</main>
+{% endblock %}
